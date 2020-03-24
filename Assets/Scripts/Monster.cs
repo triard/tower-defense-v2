@@ -11,6 +11,10 @@ public class Monster : MonoBehaviour
 
 	private List<Debuff> debuffs = new List<Debuff>();
 
+	private List<Debuff> debuffsToRemove = new List<Debuff>();
+
+	private List<Debuff> newDebuffs = new List<Debuff>();
+
 	[SerializeField]
 	private Element elementType;
 
@@ -27,6 +31,11 @@ public class Monster : MonoBehaviour
 	public bool Alive
 	{
 		get { return health.CurrentValue > 0; }
+	}
+
+	public Element ElementType
+	{
+		get { return elementType; }
 	}
 
 	private Animator myAnimator;
@@ -170,12 +179,12 @@ public class Monster : MonoBehaviour
 		GameManager.Instance.RemoveMonster(this);
 	}
 
-	public void TakeDamage(int damage, Element dmgSource)
+	public void TakeDamage(float damage, Element dmgSource)
 	{
 		if (IsActive)
 		{
 
-			if (dmgSource == elementType)
+			if (dmgSource == ElementType)
 			{
 				damage = damage / invulnerability;
 				invulnerability++;
@@ -200,12 +209,31 @@ public class Monster : MonoBehaviour
 	{
 		if (!debuffs.Exists(x => x.GetType() == debuff.GetType()))
 		{
-			debuffs.Add(debuff);
+			newDebuffs.Add(debuff);
 		}
+	}
+
+	public void RemoveDebuff(Debuff debuff)
+	{
+		debuffsToRemove.Add(debuff);
 	}
 
 	private void HandleDebuffs()
 	{
+		if (newDebuffs.Count >0)
+		{
+			debuffs.AddRange(newDebuffs);
+
+			newDebuffs.Clear();
+		}
+
+		foreach (Debuff debuff in debuffsToRemove)
+		{
+			debuffs.Remove(debuff);
+		}
+
+		debuffsToRemove.Clear();
+
 		foreach (Debuff debuff in debuffs)
 		{
 			debuff.Update();

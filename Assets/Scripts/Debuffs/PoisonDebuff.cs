@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PoisonDebuff : Debuff
 {
-    public PoisonDebuff(Monster target) : base(target)
+    public PoisonDebuff(Monster target) : base(target,1)
     {
     }
 }

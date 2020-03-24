@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FrostDebuff : Debuff
 {
-    public FrostDebuff(Monster target) : base(target)
+    public FrostDebuff(Monster target) : base(target,1)
     {
     }
 }

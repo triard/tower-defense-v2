@@ -22,6 +22,12 @@ public abstract class Tower : MonoBehaviour
 	[SerializeField]
 	private int damage;
 
+	[SerializeField]
+	private float debuffDuration;
+
+	[SerializeField]
+	private float proc;
+
 	public Element ElementType { get; protected set; }
 
 	private Monster target;
@@ -45,6 +51,23 @@ public abstract class Tower : MonoBehaviour
 	private float attackTimer;
 
 	public int Price { get; set; }
+	public float DebuffDuration
+	{
+		get { return debuffDuration; }
+		set
+		{
+			debuffDuration = value;
+		}
+	}
+
+	public float Proc
+	{
+		get { return proc; }
+		set
+		{
+			proc = value;
+		}
+	}
 
 	[SerializeField]
 	private float attackCooldown;

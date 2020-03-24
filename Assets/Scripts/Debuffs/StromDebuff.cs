@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StromDebuff : Debuff
 {
-    public StromDebuff(Monster target) : base(target)
+    public StromDebuff(Monster target) : base(target,1)
     {
     }
 }

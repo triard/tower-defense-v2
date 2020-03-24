@@ -112,6 +112,8 @@ MonoBehaviour:
   projectileType: StormProjectile
   projectileSpeed: 3
   damage: 5
+  debuffDuration: 1
+  proc: 100
   attackCooldown: 3
 --- !u!1 &1665565121497846
 GameObject:
