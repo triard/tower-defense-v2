@@ -44,5 +44,21 @@ public class TowerBtn : MonoBehaviour
 	private void Start()
 	{
 		PriceTxt.text = Price + " <color=lime>$</color>";
+
+		GameManager.Instance.Changed += new CurrencyChanged(PriceCheck);
+	}
+
+	private void PriceCheck()
+	{
+		if (price<=GameManager.Instance.Currency)
+		{
+			GetComponent<Image>().color = Color.white;
+			PriceTxt.color = Color.white;
+		}
+		else
+		{
+			GetComponent<Image>().color = Color.grey;
+			PriceTxt.color = Color.grey;
+		}
 	}
 }

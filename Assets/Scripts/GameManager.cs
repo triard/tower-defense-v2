@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+public delegate void CurrencyChanged();
 public class GameManager : Singleton<GameManager>
 {
+
+	public event CurrencyChanged Changed;
 	public TowerBtn ClickedBtn { get; set; }
 
 	public int Currency
@@ -19,6 +21,8 @@ public class GameManager : Singleton<GameManager>
 		{
 			this.currency = value;
 			this.currencyTxt.text = value.ToString() + " <color=lime>$</color>";
+
+			OnCurrencyChanged();
 		}
 	}
 
@@ -121,6 +125,15 @@ public class GameManager : Singleton<GameManager>
 			Hover.Instance.Deactivate();
 		}
 	}
+
+	public void OnCurrencyChanged()
+	{
+		if (Changed != null)
+		{
+			Changed();
+		}
+	}
+
 
 	public void SelectTower(Tower tower)
 	{
