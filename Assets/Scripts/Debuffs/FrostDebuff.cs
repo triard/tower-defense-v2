@@ -32,6 +32,6 @@ public class FrostDebuff : Debuff
     {
         target.Speed = target.MaxSpeed;
 
-        base.Remove();
+        base.Remove();  
     }
 }

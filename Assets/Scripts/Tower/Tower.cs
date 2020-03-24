@@ -108,7 +108,7 @@ public abstract class Tower : MonoBehaviour
 			}
 		}
 
-		if (target == null && monsters.Count > 0)
+		if (target == null && monsters.Count > 0 && monsters.Peek().IsActive)
 		{
 			target = monsters.Dequeue();
 		}
@@ -124,10 +124,7 @@ public abstract class Tower : MonoBehaviour
 			}
 		}
 
-		else if (monsters.Count > 0)
-		{
-			target = monsters.Dequeue();
-		}
+
 		if (target != null && !target.Alive || target!=null && target.IsActive)
 		{
 			target = null;
