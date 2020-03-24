@@ -185,6 +185,8 @@ public class Monster : MonoBehaviour
 
 	public void Release()
 	{
+		debuffs.Clear();
+
 		IsActive = false;
 		GridPosition = LevelManager.Instance.BlueSpawn;
 		GameManager.Instance.Pool.ReleaseObject(gameObject);
