@@ -8,4 +8,9 @@ public class FrostTower : Tower
     {
         ElementType = Element.FROST;
     }
+
+    public override Debuff GetDebuff()
+    {
+        return new FrostDebuff(Target);
+    }
 }

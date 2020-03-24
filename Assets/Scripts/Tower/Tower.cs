@@ -128,6 +128,8 @@ public abstract class Tower : MonoBehaviour
 		}
 	}
 
+	public abstract Debuff GetDebuff();
+
 	public void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.tag == "Monster")

@@ -48,6 +48,11 @@ public class Projectile : MonoBehaviour
 		}
 	}
 
+	private void ApplyDebuff()
+	{
+		target.AddDebuff(parent.GetDebuff());
+	}
+
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.tag == "Monster")
@@ -57,6 +62,8 @@ public class Projectile : MonoBehaviour
 				target.TakeDamage(parent.Damage, elementType);
 
 				myAnimator.SetTrigger("Impact");
+
+				ApplyDebuff();
 			}
 			
 		}

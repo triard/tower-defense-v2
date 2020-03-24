@@ -9,6 +9,8 @@ public class Monster : MonoBehaviour
 
 	private Stack<Node> path;
 
+	private List<Debuff> debuffs = new List<Debuff>();
+
 	[SerializeField]
 	private Element elementType;
 
@@ -42,6 +44,8 @@ public class Monster : MonoBehaviour
 
 	private void Update()
 	{
+		HandleDebuffs();
+
 		Move();
 	}
 
@@ -63,7 +67,7 @@ public class Monster : MonoBehaviour
 	}
 
 	public IEnumerator Scale(Vector3 from, Vector3 to, bool remove)
-	{ 
+	{
 		float progress = 0;
 
 		while (progress <= 1)
@@ -103,7 +107,7 @@ public class Monster : MonoBehaviour
 
 	private void SetPath(Stack<Node> newPath)
 	{
-		if (newPath !=null)
+		if (newPath != null)
 		{
 			this.path = newPath;
 			GridPosition = path.Peek().GridPosition;
@@ -120,7 +124,7 @@ public class Monster : MonoBehaviour
 			myAnimator.SetInteger("Horizontal", 0);
 			myAnimator.SetInteger("Vertical", 1);
 		}
-		else if(currentPos.Y <newPos.Y)
+		else if (currentPos.Y < newPos.Y)
 		{
 			//Moving Up
 			myAnimator.SetInteger("Horizontal", 0);
@@ -171,11 +175,11 @@ public class Monster : MonoBehaviour
 		if (IsActive)
 		{
 
-            if (dmgSource == elementType)
-            {
+			if (dmgSource == elementType)
+			{
 				damage = damage / invulnerability;
 				invulnerability++;
-            }
+			}
 
 			health.CurrentValue -= damage;
 
@@ -190,5 +194,23 @@ public class Monster : MonoBehaviour
 				GetComponent<SpriteRenderer>().sortingOrder--;
 			}
 		}
+	}
+
+	public void AddDebuff(Debuff debuff)
+	{
+		if (!debuffs.Exists(x => x.GetType() == debuff.GetType()))
+		{
+			debuffs.Add(debuff);
+		}
+	}
+
+	private void HandleDebuffs()
+	{
+		foreach (Debuff debuff in debuffs)
+		{
+			debuff.Update();
+		}
+
+
 	}
 }
