@@ -8,6 +8,6 @@ public class StromTower : Tower
 
     public override Debuff GetDebuff()
     {
-        return new StromDebuff(Target);
+        return new StromDebuff(Target, DebuffDuration);
     }
 }

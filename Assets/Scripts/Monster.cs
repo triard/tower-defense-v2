@@ -24,6 +24,8 @@ public class Monster : MonoBehaviour
 
 	public bool IsActive { get; set; }
 
+	public float MaxSpeed { get; set; }
+
 	private SpriteRenderer spriteRenderer;
 
 	private int invulnerability = 2;
@@ -38,6 +40,15 @@ public class Monster : MonoBehaviour
 		get { return elementType; }
 	}
 
+	public float Speed
+	{
+		get { return speed; }
+		set
+		{
+			speed = value;
+		}
+	}
+
 	private Animator myAnimator;
 
 	[SerializeField]
@@ -47,6 +58,7 @@ public class Monster : MonoBehaviour
 	private void Awake()
 	{
 		myAnimator = GetComponent<Animator>();
+		MaxSpeed = speed;
 		health.Initialize();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
@@ -101,7 +113,7 @@ public class Monster : MonoBehaviour
 	{
 		if (IsActive)
 		{
-			transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
+			transform.position = Vector2.MoveTowards(transform.position, destination, Speed * Time.deltaTime);
 			if (transform.position == destination)
 			{
 				if (path != null && path.Count > 0)
