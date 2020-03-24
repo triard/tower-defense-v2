@@ -8,6 +8,10 @@ public class FrostTower : Tower
     [SerializeField]
     private float slowingFactor;
 
+    public float SlowingFactor
+    {
+        get { return slowingFactor; }
+    }
 
     private void Start()
     {
@@ -16,6 +20,6 @@ public class FrostTower : Tower
 
     public override Debuff GetDebuff()
     {
-        return new FrostDebuff(slowingFactor,DebuffDuration,Target);
+        return new FrostDebuff(SlowingFactor,DebuffDuration,Target);
     }
 }

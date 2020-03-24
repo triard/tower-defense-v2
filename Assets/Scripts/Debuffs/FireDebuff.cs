@@ -18,6 +18,7 @@ public class FireDebuff : Debuff
 
     }
 
+
     public override void Update()
     {
 
