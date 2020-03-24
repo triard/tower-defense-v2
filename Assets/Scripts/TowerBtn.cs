@@ -61,4 +61,10 @@ public class TowerBtn : MonoBehaviour
 			PriceTxt.color = Color.grey;
 		}
 	}
+
+	public void ShowInfo(string type)
+	{
+		GameManager.Instance.SetTooltipText(type);
+		GameManager.Instance.ShowStats();
+	}
 }

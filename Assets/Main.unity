@@ -283,10 +283,10 @@ RectTransform:
   m_Father: {fileID: 1959141767}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 62.37415, y: -412.6793}
+  m_SizeDelta: {x: 70.7483, y: 19.954649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &415888917
 MonoBehaviour:
@@ -472,7 +472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.195, y: -0.15075}
+  m_AnchoredPosition: {x: 0.1949997, y: -0.15075016}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &547324126
@@ -1081,6 +1081,7 @@ GameObject:
   - component: {fileID: 732045444}
   - component: {fileID: 732045443}
   - component: {fileID: 732045446}
+  - component: {fileID: 732045447}
   m_Layer: 5
   m_Name: PoisonBtn
   m_TagString: Untagged
@@ -1211,6 +1212,50 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: b9f20953b1138c045b5b696d1091afaa, type: 3}
   price: 5
   PriceTxt: {fileID: 606679298}
+--- !u!114 &732045447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732045441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 732045446}
+          m_MethodName: ShowInfo
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Posion
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 831839289}
+          m_MethodName: ShowStats
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  delegates: []
 --- !u!1 &737635214
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,8 +1503,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sellText: {fileID: 1530387947}
   upgradePanel: {fileID: 385723554}
+  statsPanel: {fileID: 1959141766}
   gameOverMenu: {fileID: 706917745}
   livesTxt: {fileID: 818860447}
+  sizeText: {fileID: 415888917}
+  statText: {fileID: 547324127}
   waveTxt: {fileID: 1293420577}
   currencyTxt: {fileID: 1595801322}
   waveBtn: {fileID: 639957930}
@@ -1532,7 +1580,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.02, y: -0.34}
+  m_AnchoredPosition: {x: -0.020000458, y: -0.34000015}
   m_SizeDelta: {x: 6.4, y: 6.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &837018756
@@ -1902,6 +1950,7 @@ GameObject:
   - component: {fileID: 1252064850}
   - component: {fileID: 1252064849}
   - component: {fileID: 1252064852}
+  - component: {fileID: 1252064853}
   m_Layer: 5
   m_Name: StormBtn
   m_TagString: Untagged
@@ -2032,6 +2081,50 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 09fe80c5eadd29641bab83652999af68, type: 3}
   price: 2
   PriceTxt: {fileID: 440050308}
+--- !u!114 &1252064853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252064847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1252064852}
+          m_MethodName: ShowInfo
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Strom
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 831839289}
+          m_MethodName: ShowStats
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  delegates: []
 --- !u!1 &1293420573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,6 +2449,7 @@ GameObject:
   - component: {fileID: 1520129420}
   - component: {fileID: 1520129419}
   - component: {fileID: 1520129422}
+  - component: {fileID: 1520129423}
   m_Layer: 5
   m_Name: FrostBtn
   m_TagString: Untagged
@@ -2486,6 +2580,50 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 196fbd7d6ba84b34c853a920a6eac0c0, type: 3}
   price: 2
   PriceTxt: {fileID: 1988066183}
+--- !u!114 &1520129423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520129417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1520129422}
+          m_MethodName: ShowInfo
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Frost
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 831839289}
+          m_MethodName: ShowStats
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  delegates: []
 --- !u!1 &1530387943
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,6 +3459,7 @@ GameObject:
   - component: {fileID: 1842869447}
   - component: {fileID: 1842869446}
   - component: {fileID: 1842869449}
+  - component: {fileID: 1842869450}
   m_Layer: 5
   m_Name: FireBtn
   m_TagString: Untagged
@@ -3451,6 +3590,50 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 96a6692f01d4fc14295d3420405dd688, type: 3}
   price: 4
   PriceTxt: {fileID: 1936916744}
+--- !u!114 &1842869450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842869444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1842869449}
+          m_MethodName: ShowInfo
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Fire
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 831839289}
+          m_MethodName: ShowStats
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  delegates: []
 --- !u!1 &1883011506
 GameObject:
   m_ObjectHideFlags: 0
@@ -3650,7 +3833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1959141767
 RectTransform:
   m_ObjectHideFlags: 0

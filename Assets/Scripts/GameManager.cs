@@ -43,12 +43,20 @@ public class GameManager : Singleton<GameManager>
 	private GameObject upgradePanel;
 
 	[SerializeField]
+	private GameObject statsPanel;
+
+	[SerializeField]
 	private GameObject gameOverMenu;
 
 	private Tower selectedTower;
 
 	[SerializeField]
 	private Text livesTxt;
+
+	[SerializeField]
+	private Text sizeText;
+	[SerializeField]
+	private Text statText;
 
 	public int Lives
 	{
@@ -261,5 +269,16 @@ public class GameManager : Singleton<GameManager>
 
 			DeselectTower();
 		}
+	}
+
+	public void ShowStats()
+	{
+		statsPanel.SetActive(!statsPanel.activeSelf); 
+	}
+
+	public void SetTooltipText(string txt)
+	{
+		statText.text = txt;
+		sizeText.text = txt;
 	}
 }
