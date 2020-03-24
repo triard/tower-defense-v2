@@ -22,7 +22,16 @@ public class FireTower : Tower
         }
     }
 
-    private void Start() => ElementType = Element.FIRE;
+    private void Start()
+    {
+        ElementType = Element.FIRE;
+
+        Upgrades = new TowerUpgrade[]
+        {
+            new TowerUpgrade(2,2,.5f,5,-0.1f,1 ),
+            new TowerUpgrade(5,3,.5f,5,-0.1f,1 )
+        };
+    }
 
     public override Debuff GetDebuff()
     {

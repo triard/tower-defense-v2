@@ -16,6 +16,12 @@ public class FrostTower : Tower
     private void Start()
     {
         ElementType = Element.FROST;
+
+        Upgrades = new TowerUpgrade[]
+    {
+            new TowerUpgrade(2,1,1,2,10 ),
+            new TowerUpgrade(2,1,1,2,20 )
+    };
     }
 
     public override Debuff GetDebuff()

@@ -72,6 +72,8 @@ public abstract class Tower : MonoBehaviour
 	[SerializeField]
 	private float attackCooldown;
 
+	public TowerUpgrade[] Upgrades { get; protected set; } 
+
 	private SpriteRenderer mySpriteRenderer;
 
 	private Queue<Monster> monsters = new Queue<Monster>();
