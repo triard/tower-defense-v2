@@ -62,6 +62,9 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField]
 	private GameObject InGameMenu;
 
+	[SerializeField]
+	private GameObject OptionMenu;
+
 	public int Lives
 	{
 		get
@@ -331,20 +334,40 @@ public class GameManager : Singleton<GameManager>
 
 	public void ShowInGameMenu()
 	{
-		InGameMenu.SetActive(!InGameMenu.activeSelf);
-		if (!InGameMenu.activeSelf)
+		if (OptionMenu.activeSelf)
 		{
-			Time.timeScale = 1;
+			ShowMain();
 		}
 		else
 		{
-			Time.timeScale = 0;
+			InGameMenu.SetActive(!InGameMenu.activeSelf);
+			if (!InGameMenu.activeSelf)
+			{
+				Time.timeScale = 1;
+			}
+			else
+			{
+				Time.timeScale = 0;
+			}
 		}
+
 	}
 
 	private void DropTower()
 	{
 		ClickedBtn = null;
 		Hover.Instance.Deactivate();
+	}
+
+	public void ShowOptionMenu()
+	{
+		InGameMenu.SetActive(false);
+		OptionMenu.SetActive(true);
+	}
+
+	public void ShowMain()
+	{
+		InGameMenu.SetActive(true);
+		OptionMenu.SetActive(false);
 	}
 }
