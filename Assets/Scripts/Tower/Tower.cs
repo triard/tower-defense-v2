@@ -32,6 +32,9 @@ public abstract class Tower : MonoBehaviour
 
 	private Monster target;
 
+	public int Level { get; protected set; }
+
+
 	public Monster Target
 	{
 		get { return target; }
@@ -78,11 +81,27 @@ public abstract class Tower : MonoBehaviour
 
 	private Queue<Monster> monsters = new Queue<Monster>();
 
+
+	public TowerUpgrade NextUpgrade
+	{
+		get{
+			if (Upgrades.Length > Level - 1)
+			{
+				return Upgrades[Level - 1];
+			}
+
+			return null;
+		}
+	}
+
+
+
 	// Use this for initialization
 	void Awake ()
 	{
 		mySpriteRenderer = GetComponent<SpriteRenderer>();
 		myAnimator = transform.parent.GetComponent<Animator>();
+		Level = 1;
 	}
 	
 	// Update is called once per frame
@@ -131,6 +150,17 @@ public abstract class Tower : MonoBehaviour
 		{
 			target = null;
 		}
+	}
+
+
+	public virtual string GetStats()
+	{
+
+		if (NextUpgrade != null)
+		{
+			return string.Format("\nLevel: {0}\nDamage: {1}<color=#00ff00ff> +{4}</color>\nProc: {2}% <color=#00ff00ff>+{5}%</color>\nDebuff: {3}sec <color=#00ff00ff>+{6}</color>",Level,damage,proc,DebuffDuration, NextUpgrade.Damage, NextUpgrade.ProChance, NextUpgrade.DebuffDuration);
+		}
+		return string.Format("\nLevel: {0} \nDamage: {1} \nProc: {2}%\nDebuff: {3}sec", Level, damage, proc, DebuffDuration);
 	}
 
 	private void Shoot()

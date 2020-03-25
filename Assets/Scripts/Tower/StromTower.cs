@@ -19,4 +19,9 @@ public class StromTower : Tower
     {
         return new StromDebuff(Target, DebuffDuration);
     }
+
+    public override string GetStats()
+    {
+        return string.Format("<color=#add8e6ff>{0}</color>{1}", "<size=20><b>Strom</b></size>", base.GetStats());
+    }
 }

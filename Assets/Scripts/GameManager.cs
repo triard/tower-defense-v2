@@ -105,7 +105,7 @@ public class GameManager : Singleton<GameManager>
 	void Start ()
 	{
 		Lives = 10;
-		Currency = 100;
+		Currency = 10;
 	}
 	
 	// Update is called once per frame
@@ -271,11 +271,25 @@ public class GameManager : Singleton<GameManager>
 
 	public void ShowStats()
 	{
-		statsPanel.SetActive(!statsPanel.activeSelf); 
+		statsPanel.SetActive(!statsPanel.activeSelf);
+	}
+
+	public void ShowSelectTowerStats()
+	{
+		statsPanel.SetActive(!statsPanel.activeSelf);
+		UpdateUpgradelTip();
 	}
 
 	public void SetTooltipText(string txt)
 	{
 		statText.text = txt;
+	}
+
+	public void UpdateUpgradelTip()
+	{
+		if (selectedTower!=null)
+		{
+			SetTooltipText(selectedTower.GetStats());
+		}
 	}
 }

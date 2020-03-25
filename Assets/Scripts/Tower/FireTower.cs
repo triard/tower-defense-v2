@@ -37,4 +37,14 @@ public class FireTower : Tower
     {
         return new FireDebuff(TickDamage,TickTime,DebuffDuration,Target);
     }
+
+    public virtual string GetStats()
+    {
+
+        if (NextUpgrade != null)
+        {
+            return string.Format("<color=#ffa500ff>{0}</color>{1} \nTick time: {2} <color=#00ff00ff>{4}</color>\nTick Damage {3} <color=#00ff00ff>+{5} </color>" ,"<size=20><b>Fire</b></size>", base.GetStats(), tickTime, tickDamage, NextUpgrade.TickTime, NextUpgrade.SpecialDamage);
+        }
+        return string.Format("<color=#ffa500ff>{0}</color>{1} \nTick time: {2}\nTick damage: {3}","< size = 20 >< b > Fire </ b ></ size >", base.GetStats(), TickTime, TickDamage);
+    }
 }
