@@ -22,6 +22,17 @@ public class StromTower : Tower
 
     public override string GetStats()
     {
+     //   if (NextUpgrade != null)
+     //   {
+      //      return string.Format("<color=#add8e6ff>{0}</color>{1} \nTick time: {2} <color=#00ff00ff>+{4}</color>\nSplash Damage {3} <color=#00ff00ff>+{5} </color>", "<size=20><b>Poison</b></size>", base.GetStats(), tickTime, SplashDamage, NextUpgrade.TickTime, NextUpgrade.SpecialDamage);
+       // }
+
         return string.Format("<color=#add8e6ff>{0}</color>{1}", "<size=20><b>Strom</b></size>", base.GetStats());
+    }
+
+    public override void Upgrade()
+    {
+        base.GetStats();
+        base.Upgrade();
     }
 }

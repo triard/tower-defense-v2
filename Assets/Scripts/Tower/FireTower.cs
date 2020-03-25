@@ -45,6 +45,14 @@ public class FireTower : Tower
         {
             return string.Format("<color=#ffa500ff>{0}</color>{1} \nTick time: {2} <color=#00ff00ff>{4}</color>\nTick Damage {3} <color=#00ff00ff>+{5} </color>" ,"<size=20><b>Fire</b></size>", base.GetStats(), tickTime, tickDamage, NextUpgrade.TickTime, NextUpgrade.SpecialDamage);
         }
-        return string.Format("<color=#ffa500ff>{0}</color>{1} \nTick time: {2}\nTick damage: {3}","< size = 20 >< b > Fire </ b ></ size >", base.GetStats(), TickTime, TickDamage);
+        return string.Format("<color=#ffa500ff>{0}</color> \nTick time: {2}\nTick damage: {3}","<size=20><b>Fire</b></size>", base.GetStats(), TickTime, TickDamage);
+    }
+
+
+    public override void Upgrade()
+    {
+        this.tickDamage -= NextUpgrade.SpecialDamage;
+        this.tickTime -= NextUpgrade.TickTime;
+        base.Upgrade();
     }
 }

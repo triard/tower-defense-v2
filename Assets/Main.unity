@@ -426,7 +426,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: bitton
+  m_Text: null
 --- !u!222 &500820994
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1413,6 +1413,7 @@ MonoBehaviour:
   gameOverMenu: {fileID: 706917745}
   livesTxt: {fileID: 818860447}
   statText: {fileID: 500820993}
+  upgradePrice: {fileID: 1076211658}
   waveTxt: {fileID: 1293420577}
   currencyTxt: {fileID: 1595801322}
   waveBtn: {fileID: 639957930}
@@ -1546,7 +1547,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 959873055}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 831839289}
+        m_MethodName: UpgradeTower
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &959873055
 MonoBehaviour:
   m_ObjectHideFlags: 0
