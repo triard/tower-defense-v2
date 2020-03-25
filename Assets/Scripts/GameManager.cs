@@ -59,6 +59,9 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField]
 	private Text upgradePrice;
 
+	[SerializeField]
+	private GameObject InGameMenu;
+
 	public int Lives
 	{
 		get
@@ -114,7 +117,7 @@ public class GameManager : Singleton<GameManager>
 	// Update is called once per frame
 	void Update ()
 	{
-		HandleEscape();	
+		HandleEscape();
 	}
 
 	public void PickTower(TowerBtn towerBtn)
@@ -173,7 +176,17 @@ public class GameManager : Singleton<GameManager>
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			Hover.Instance.Deactivate();
+			if (selectedTower == null && !Hover.Instance.IsVisible)
+			{
+				ShowInGameMenu();
+			}
+			else if (Hover.Instance.IsVisible)
+			{
+				DropTower();
+			}else if (selectedTower != null)
+			{
+				DeselectTower();
+			}
 		}
 	}
 
@@ -314,5 +327,24 @@ public class GameManager : Singleton<GameManager>
 				selectedTower.Upgrade();
 			}
 		}
+	}
+
+	public void ShowInGameMenu()
+	{
+		InGameMenu.SetActive(!InGameMenu.activeSelf);
+		if (!InGameMenu.activeSelf)
+		{
+			Time.timeScale = 1;
+		}
+		else
+		{
+			Time.timeScale = 0;
+		}
+	}
+
+	private void DropTower()
+	{
+		ClickedBtn = null;
+		Hover.Instance.Deactivate();
 	}
 }
