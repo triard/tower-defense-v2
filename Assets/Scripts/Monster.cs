@@ -208,6 +208,8 @@ public class Monster : MonoBehaviour
 
 			if (health.CurrentValue <= 0)
 			{
+
+				SoundManajer.Instance.PlaySFX("Splat");
 				GameManager.Instance.Currency += 2;
 
 				myAnimator.SetTrigger("Die");
