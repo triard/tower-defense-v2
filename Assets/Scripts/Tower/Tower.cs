@@ -140,6 +140,7 @@ public abstract class Tower : MonoBehaviour
 			if (canAttack)
 			{
 				Shoot();
+				SoundManajer.Instance.PlaySFX("flame");
 
 				myAnimator.SetTrigger("Attack");
 
@@ -148,7 +149,7 @@ public abstract class Tower : MonoBehaviour
 		}
 
 
-		if (target != null && !target.Alive || target!=null && target.IsActive)
+		if (!target == null && target.Alive || !target == null && target.IsActive)
 		{
 			target = null;
 		}

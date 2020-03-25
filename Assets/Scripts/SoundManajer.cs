@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class SoundManajer : Singleton<SoundManajer>
 {
 
-    [SerializeField]
-    private AudioSource musicSource;
+
     [SerializeField]
     private AudioSource sfxSource;
-    [SerializeField]
-    private Slider musicSlider;
+
+ 
+
     [SerializeField]
     private Slider sfxSlider;
 
@@ -27,6 +27,10 @@ public class SoundManajer : Singleton<SoundManajer>
         {
             audioClips.Add(clip.name, clip);
         }
+
+        LoadVolume();
+        sfxSlider.onValueChanged.AddListener(delegate { UpdateVolume(); });
+
     }
 
     // Update is called once per frame
@@ -35,4 +39,22 @@ public class SoundManajer : Singleton<SoundManajer>
     {
         sfxSource.PlayOneShot(audioClips[name]);
     }
+
+    public void UpdateVolume()
+    {
+
+        sfxSource.volume = sfxSlider.value;
+
+        PlayerPrefs.SetFloat("SFX", sfxSlider.value);
+
+    }
+
+    public void LoadVolume()
+    {
+        sfxSource.volume = PlayerPrefs.GetFloat("SFX", 0.5f);
+
+        sfxSlider.value = sfxSource.volume;
+    }
+
+
 }
