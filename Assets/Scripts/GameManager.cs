@@ -26,9 +26,12 @@ public class GameManager : Singleton<GameManager>
 		}
 	}
 
+	private int currencySaved;
+	private int waveSaved;
+	private int livesSaved;
 	private int currency;
 
-	private int wave = 0;
+	private int wave=0;
 
 	private int lives;
 
@@ -52,7 +55,7 @@ public class GameManager : Singleton<GameManager>
 
 	[SerializeField]
 	private Text livesTxt;
-	
+
 	[SerializeField]
 	private Text statText;
 
@@ -76,7 +79,7 @@ public class GameManager : Singleton<GameManager>
 		{
 			this.lives = value;
 			livesTxt.text = lives.ToString();
-			if (lives <=0)
+			if (lives <= 0)
 			{
 				this.lives = 0;
 				GameOver();
@@ -111,21 +114,21 @@ public class GameManager : Singleton<GameManager>
 	}
 
 	// Use this for initialization
-	void Start ()
+	void Start()
 	{
 		Lives = 10;
-		Currency = 50;
+		Currency = 20;
 	}
-	
+
 	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
-		HandleEscape();
+		HandleEscape();	
 	}
 
 	public void PickTower(TowerBtn towerBtn)
 	{
-		if (Currency >=towerBtn.Price && !WaveActive)
+		if (Currency >= towerBtn.Price && !WaveActive)
 		{
 			this.ClickedBtn = towerBtn;
 			Hover.Instance.Activate(towerBtn.Sprite);
@@ -152,7 +155,7 @@ public class GameManager : Singleton<GameManager>
 
 	public void SelectTower(Tower tower)
 	{
-		if (selectedTower !=null)
+		if (selectedTower != null)
 		{
 			selectedTower.Select();
 		}
@@ -166,7 +169,7 @@ public class GameManager : Singleton<GameManager>
 
 	public void DeselectTower()
 	{
-		if (selectedTower !=null)
+		if (selectedTower != null)
 		{
 			selectedTower.Select();
 		}
@@ -186,7 +189,7 @@ public class GameManager : Singleton<GameManager>
 			else if (Hover.Instance.IsVisible)
 			{
 				DropTower();
-			}else if (selectedTower != null)
+			} else if (selectedTower != null)
 			{
 				DeselectTower();
 			}
@@ -205,7 +208,7 @@ public class GameManager : Singleton<GameManager>
 	}
 
 	private IEnumerator SpawnWave()
-	{ 
+	{
 		LevelManager.Instance.GeneratePath();
 
 		for (int i = 0; i < wave; i++)
@@ -271,7 +274,8 @@ public class GameManager : Singleton<GameManager>
 
 	public void QuitGame()
 	{
-		Application.Quit();
+		Time.timeScale = 1;
+		SceneManager.LoadScene(1);
 	}
 
 	public void SellTower()
@@ -306,9 +310,9 @@ public class GameManager : Singleton<GameManager>
 
 	public void UpdateUpgradelTip()
 	{
-		if (selectedTower!=null)
+		if (selectedTower != null)
 		{
-			sellText.text = "+" + (selectedTower.Price / 2).ToString()+" $";
+			sellText.text = "+" + (selectedTower.Price / 2).ToString() + " $";
 			SetTooltipText(selectedTower.GetStats());
 			if (selectedTower.NextUpgrade != null)
 			{
@@ -325,7 +329,7 @@ public class GameManager : Singleton<GameManager>
 	{
 		if (selectedTower != null)
 		{
-			if (selectedTower.Level <= selectedTower.Upgrades.Length && Currency>=selectedTower.NextUpgrade.Price)
+			if (selectedTower.Level <= selectedTower.Upgrades.Length && Currency >= selectedTower.NextUpgrade.Price)
 			{
 				selectedTower.Upgrade();
 			}
@@ -370,4 +374,40 @@ public class GameManager : Singleton<GameManager>
 		InGameMenu.SetActive(true);
 		OptionMenu.SetActive(false);
 	}
+
+	public void Save()
+	{
+		
+			 PlayerPrefs.SetInt("CURRENCY", currency);
+			PlayerPrefs.SetInt("WAVE", wave);
+			PlayerPrefs.SetInt("LIVES", lives);
+		PlayerPrefs.Save();
+		Debug.Log("sukses");
+	}
+
+	public void Load()
+	{
+		
+			currencySaved = PlayerPrefs.GetInt("CURRENCY", 10);
+			waveSaved= PlayerPrefs.GetInt("WAVE", 0);
+			livesSaved = PlayerPrefs.GetInt("LIVES", 10);
+
+			Currency = currencySaved;
+			wave = waveSaved;
+			Lives = livesSaved;
+			Debug.Log("currency" + Currency);
+			Debug.Log("wave " + wave);
+			Debug.Log("live" + Lives);
+	}
+
+
+		public void ResumeGameInLoad()
+	{
+		Load();
+		InGameMenu.SetActive(true);
+		gameOverMenu.SetActive(false);
+		ShowInGameMenu();
+	}
+
+
 }

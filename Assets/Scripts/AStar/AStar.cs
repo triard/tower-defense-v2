@@ -104,11 +104,11 @@ public static class AStar
 					finalPath.Push(currentNode);
 					currentNode = currentNode.Parent;
 				}
-				break;
+				return finalPath;
 			}
 		}
 
-		return finalPath;
+		return null;
 		
 		//THIS IS ONLY FOR DEBUGGING NEEDS TO BE REMOVED LATER
 		//GameObject.Find("AStarDebugger").GetComponent<AStarDebugger>().DebugPath(openList, closeList, finalPath);

@@ -55,6 +55,14 @@ public class LevelManager : Singleton<LevelManager>
 		}
 	}
 
+	public Point RedSpawn
+	{
+		get
+		{
+			return redSpawn;
+		}
+	}
+
 	// Use this for initialization
 	void Start ()
 	{
